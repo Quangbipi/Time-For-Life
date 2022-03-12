@@ -24,9 +24,8 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bottomNavigationView = findViewById(R.id.bottom_app_bar)
-        viewPager = findViewById(R.id.viewPager)
-
+        anhXa()
+        //set background null
         bottomNavigationView.setBackgroundColor(0)
 
         setUpViewPager()
@@ -50,6 +49,11 @@ class MainActivity : AppCompatActivity(){
     fun setUpViewPager(){
         var viewPagerAdapter : ViewPagerAdapterDay = ViewPagerAdapterDay(supportFragmentManager, lifecycle)
         viewPager.adapter = viewPagerAdapter
+    }
+
+    private fun anhXa(){
+        bottomNavigationView = findViewById(R.id.bottom_app_bar)
+        viewPager = findViewById(R.id.viewPager)
     }
 
 
