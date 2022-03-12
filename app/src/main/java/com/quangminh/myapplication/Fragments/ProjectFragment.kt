@@ -34,7 +34,7 @@ class ProjectFragment : Fragment() {
     lateinit var workList: ArrayList<String>
 
     lateinit var linearLayoutManager: LinearLayoutManager
-
+    lateinit var linearLayoutManager2: LinearLayoutManager
     lateinit var cal : Calendar
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -44,6 +44,7 @@ class ProjectFragment : Fragment() {
 
         var view : View = inflater.inflate(R.layout.fragment_project, container, false)
         recycleView = view.findViewById(R.id.rcv_day)
+        recyclerView2 = view.findViewById(R.id.rcw_pj)
         cal = Calendar.getInstance()
         // Inflate the layout for this fragment
         dayList = arrayListOf()
@@ -53,9 +54,11 @@ class ProjectFragment : Fragment() {
         getDateOfMont(cal.get(Calendar.MONTH))
         AddProject()
 
+        //set layoutManager
         linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recycleView.layoutManager = linearLayoutManager
-        recyclerView2.layoutManager = linearLayoutManager
+        linearLayoutManager2 = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView2.layoutManager = linearLayoutManager2
         return view
     }
 
