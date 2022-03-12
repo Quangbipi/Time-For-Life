@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Công việc"
+        android:icon="@drawable/ic_project"
+        android:id="@+id/home"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Thống kê"
+        android:icon="@drawable/ic_pie_chart"
+        android:id="@+id/tke"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Thông báo"
+        android:icon="@drawable/ic_notification"
+        android:id="@+id/tbao"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Cài đặt"
+        android:icon="@drawable/ic_user"
+        android:id="@+id/use"
+        app:showAsAction="always"
+        />
+</menu>
