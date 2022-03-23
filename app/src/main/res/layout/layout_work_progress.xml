@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardViewPr"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:padding="4sp"
+        >
+
+        <TextView
+            android:id="@+id/workkk"
+            android:padding="2dp"
+            android:drawablePadding="4dp"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Làm việc"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:paddingRight="4dp"
+            android:id="@+id/time"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="làm việc2"
+
+            />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

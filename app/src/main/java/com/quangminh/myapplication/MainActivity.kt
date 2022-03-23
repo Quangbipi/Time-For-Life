@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity(){
                     viewPager.setCurrentItem(0)
                     true
                 }
+                R.id.tke->{
+                    viewPager.setCurrentItem(1)
+                    true
+                }
                 else->{
                     false
                 }

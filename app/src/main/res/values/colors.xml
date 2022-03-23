@@ -8,12 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#132A9F</color>
-    <color name="cardColor">#19FFFFFF</color>
+    <color name="cardColor">#4DFAF8F8</color>
     <color name="priority1">#D9D7FC</color>
     <color name="priority2">#FBD7FC</color>
     <color name="priority3">#D7ECFC</color>
     <color name="priority4">#FCD7E2</color>
     <color name="priority5">#C4C1C1</color>
     <color name="misstion">#0D2525F9</color>
+    <color name="red">#FA1B1B</color>
+    <color name="path_color">#CD817EEF</color>
 
 </resources>

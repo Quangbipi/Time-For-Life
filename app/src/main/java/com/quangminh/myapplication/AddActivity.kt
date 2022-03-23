@@ -3,20 +3,19 @@ package com.quangminh.myapplication
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.core.view.get
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.quangminh.myapplication.Adapter.AdapterDate
+import com.quangminh.myapplication.Interface.DayOnClick
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
-class AddActivity : AppCompatActivity() {
+class AddActivity : AppCompatActivity(), DayOnClick{
     // khao báo view
     lateinit var rcw_day_2: RecyclerView
     lateinit var spiner : Spinner
@@ -24,6 +23,10 @@ class AddActivity : AppCompatActivity() {
     lateinit var back : ImageButton
     lateinit var timeStart : TextView
     lateinit var timeEnd : TextView
+    lateinit var important : TextView // qtrong
+    lateinit var urgency : TextView // kcap
+    lateinit var insignificance : TextView // kqtrong
+    lateinit var notUrgent: TextView // k kcap
     //khai báo manager
     lateinit var layoutManager: LinearLayoutManager
     //khai báo adapter
@@ -36,6 +39,7 @@ class AddActivity : AppCompatActivity() {
 
     lateinit var s: String
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +48,8 @@ class AddActivity : AppCompatActivity() {
         cal = Calendar.getInstance()
         getDateOfMont(cal.get(Calendar.MONTH))
 
-       anhXa()
-        setManager()
+       initView()
+        //setManager()
         setAdapterspiner()
 
         back.setOnClickListener {
@@ -60,7 +64,22 @@ class AddActivity : AppCompatActivity() {
             getTimeSE(timeEnd)
         }
 
+        important.setOnClickListener {
+            setBgk(it)
+        }
+        insignificance.setOnClickListener {
+            setBgk(it)
+        }
+        urgency.setOnClickListener {
+            setBgk(it)
+        }
+        notUrgent.setOnClickListener {
+            setBgk(it)
+        }
 
+
+        layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        rcw_day_2.layoutManager = layoutManager
 
         spiner.onItemSelectedListener = object : AdapterView.OnItemClickListener,
             AdapterView.OnItemSelectedListener {
@@ -70,17 +89,21 @@ class AddActivity : AppCompatActivity() {
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
-                var s: String = p2.toString()
-                Toast.makeText(this@AddActivity, s+ "111", Toast.LENGTH_SHORT).show()
+//                var s: String = p2.toString()
+                //Toast.makeText(this@AddActivity, s+ "111", Toast.LENGTH_SHORT).show()
                 if(p2 == 0){
-                    adapterDate = AdapterDate(listDay, weekDay)
+                    adapterDate = AdapterDate(listDay, weekDay,this@AddActivity, StaticClass.ITEM_VIEW_TYPE_0)
                     rcw_day_2.adapter = adapterDate
+                    var cal = Calendar.getInstance()
+                    scrollItem(cal.get(Calendar.DATE))
                 }else if( p2 == 1){
                     var wd : ArrayList<String> = arrayListOf("T2","T3","T4","T5","T6","T7", "CN" )
-                    adapterDate = AdapterDate(wd, weekDay)
+                    adapterDate = AdapterDate(wd, weekDay, this@AddActivity, StaticClass.ITEM_VIEW_TYPE_1)
                     rcw_day_2.adapter=adapterDate
-
-
+                }else{
+                    var wd : ArrayList<String> = arrayListOf("T2","T3","T4","T5","T6","T7", "T8" )
+                    adapterDate = AdapterDate(wd, weekDay, this@AddActivity, StaticClass.ITEM_VIEW_TYPE_2)
+                    rcw_day_2.adapter=adapterDate
                 }
             }
 
@@ -96,6 +119,35 @@ class AddActivity : AppCompatActivity() {
 
     }
 
+    // đổi bgk khi click vào
+    private fun setBgk(it: View) {
+        if(it == important){
+            insignificance.background = getDrawable(R.drawable.custom_bgk_priority_3)
+            important.background = getDrawable(R.drawable.custom_bgk_priority_1)
+        }else if (it == insignificance){
+            insignificance.background = getDrawable(R.drawable.custom_bgk_priority_4)
+            important.background = getDrawable(R.drawable.custom_bgk_priority_3)
+        }else if (it == urgency){
+            urgency.background = getDrawable(R.drawable.custom_bgk_priority_5)
+            notUrgent.background = getDrawable(R.drawable.custom_bgk_priority_3)
+        }else if (it == notUrgent){
+            urgency.background = getDrawable(R.drawable.custom_bgk_priority_3)
+            notUrgent.background = getDrawable(R.drawable.custom_bgk_priority_2)
+        }
+    }
+
+    // Scroll view hiển thị ngày về giữa
+    private fun scrollItem(index :Int) {
+        layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        Toast.makeText(this, "$index", Toast.LENGTH_SHORT).show()
+        if(layoutManager==null){
+
+        }
+        (rcw_day_2.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(index -5, 0)
+
+    }
+
+    // Time Picker Dialog
     private fun getTimeSE(time : TextView) {
 
 
@@ -109,13 +161,18 @@ class AddActivity : AppCompatActivity() {
 
     }
 
-    private fun anhXa() {
+    private fun initView() {
         rcw_day_2 = findViewById(R.id.rcw_day_2)
         spiner = findViewById(R.id.spn_time)
         spiner2 = findViewById(R.id.spiner_minute)
         back = findViewById(R.id.back_setting)
         timeStart = findViewById(R.id.time_start)
         timeEnd = findViewById(R.id.time_end)
+
+        important = findViewById(R.id.quan_trong)
+        insignificance = findViewById(R.id.kquan_trong)
+        urgency = findViewById(R.id.khan_cap)
+        notUrgent = findViewById(R.id.kkhan_cap)
     }
 
     override fun onResume() {
@@ -127,16 +184,17 @@ class AddActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        adapterDate = AdapterDate(listDay, weekDay)
+        adapterDate = AdapterDate(listDay, weekDay, this, StaticClass.ITEM_VIEW_TYPE_0)
         rcw_day_2.adapter = adapterDate
 
     }
 
-    private fun setManager(){
-        layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rcw_day_2.layoutManager = layoutManager
-    }
+//    private fun setManager(){
+//        layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+//        rcw_day_2.layoutManager = layoutManager
+//    }
 
+    // set AdapterSpiner cho spiner
     private fun setAdapterspiner(){
         var adapterSpiner : ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, R.array.spiner_cycle, R.layout.color_spiner)
         adapterSpiner.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
@@ -172,4 +230,11 @@ class AddActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onItemClick(position: Int) {
+        //Toast.makeText(this, "Click $position", Toast.LENGTH_SHORT).show()
+
+    }
+
+
 }

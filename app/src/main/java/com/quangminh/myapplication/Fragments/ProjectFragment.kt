@@ -14,14 +14,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.quangminh.myapplication.Adapter.AdapterDate
 import com.quangminh.myapplication.Adapter.AdapterProject
 import com.quangminh.myapplication.AddActivity
+import com.quangminh.myapplication.Interface.DayOnClick
 import com.quangminh.myapplication.R
+import com.quangminh.myapplication.StaticClass
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class ProjectFragment : Fragment() {
+class ProjectFragment : Fragment(), DayOnClick {
     lateinit var recycleView : RecyclerView
     lateinit var recyclerView2: RecyclerView
 
@@ -36,11 +38,10 @@ class ProjectFragment : Fragment() {
     lateinit var weekDayList : ArrayList<Int>
     lateinit var workList: ArrayList<String>
 
-    lateinit var linearLayoutManager: LinearLayoutManager
-    lateinit var linearLayoutManager2: LinearLayoutManager
+
     lateinit var cal : Calendar
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,10 +54,7 @@ class ProjectFragment : Fragment() {
         cal = Calendar.getInstance()
         getDateOfMont(cal.get(Calendar.MONTH))
 
-        AddProject()
-
-        //set layoutManager
-        setManager()
+        addProject()
 
         //even
         add.setOnClickListener {
@@ -81,17 +79,10 @@ class ProjectFragment : Fragment() {
         add = view.findViewById(R.id.add)
     }
 
-    private fun setManager(){
-        linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        recycleView.layoutManager = linearLayoutManager
-
-        linearLayoutManager2 = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        recyclerView2.layoutManager = linearLayoutManager2
-    }
 
     private fun setAdapter(){
 
-        adapter_date = AdapterDate(dayList, weekDayList)
+        adapter_date = AdapterDate(dayList, weekDayList, this, StaticClass.ITEM_VIEW_TYPE_0)
         recycleView.adapter = adapter_date
         // adapter của phần hiển thị công việc
         adapterProject = AdapterProject(workList)
@@ -99,8 +90,8 @@ class ProjectFragment : Fragment() {
     }
 
     //add ngày và thứ vào array
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getDateOfMont(month : Int){
+
+    private fun getDateOfMont(month : Int){
 
         dayList = arrayListOf()
         weekDayList= arrayListOf()
@@ -114,9 +105,9 @@ class ProjectFragment : Fragment() {
         //
         cal.set(Calendar.DAY_OF_MONTH, month)
         // lấy max day của 1 tháng
-        var maxDay : Int = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
+        val maxDay : Int = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
         //set format cal
-        var formater = SimpleDateFormat("dd")
+        val formater = SimpleDateFormat("dd")
 
         for(i in 1.. maxDay){
             cal.set(Calendar.DAY_OF_MONTH, i+1)
@@ -126,13 +117,17 @@ class ProjectFragment : Fragment() {
 
     }
 
-    fun  AddProject(){
+    private fun  addProject(){
         workList = arrayListOf()
         workList.add("Họp team mobile")
         workList.add("Họp team mobile")
         workList.add("Họp team mobile")
         workList.add("Họp team mobile")
         workList.add("Họp team mobile")
+    }
+
+    override fun onItemClick(position: Int) {
+        Toast.makeText(context, "$position click", Toast.LENGTH_SHORT).show()
     }
 }
 
