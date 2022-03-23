@@ -27,6 +27,9 @@ class AddActivity : AppCompatActivity(), DayOnClick{
     lateinit var urgency : TextView // kcap
     lateinit var insignificance : TextView // kqtrong
     lateinit var notUrgent: TextView // k kcap
+    lateinit var alamTv : TextView
+    lateinit var kpiTv : TextView
+    lateinit var notifiTv : TextView
     //khai báo manager
     lateinit var layoutManager: LinearLayoutManager
     //khai báo adapter
@@ -38,9 +41,15 @@ class AddActivity : AppCompatActivity(), DayOnClick{
     lateinit var cal: Calendar
 
     lateinit var s: String
+    var a = true
+    var n = true
+    var k = true
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
@@ -77,6 +86,15 @@ class AddActivity : AppCompatActivity(), DayOnClick{
             setBgk(it)
         }
 
+        alamTv.setOnClickListener {
+            setDrawableTv(it)
+        }
+        notifiTv.setOnClickListener {
+            setDrawableTv(it)
+        }
+        kpiTv.setOnClickListener {
+            setDrawableTv(it)
+        }
 
         layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         rcw_day_2.layoutManager = layoutManager
@@ -115,6 +133,48 @@ class AddActivity : AppCompatActivity(), DayOnClick{
 
 
 
+
+
+    }
+
+    // event Click notifi
+    private fun setDrawableTv(it: View?) {
+        when(it){
+            alamTv->{
+
+                if(a==true){
+                    alamTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_notifi_2, 0 , 0 ,0 )
+                    Toast.makeText(this, "Bật chức năng báo thức", Toast.LENGTH_SHORT).show()
+                    a=false
+                }else if (a==false){
+                    alamTv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_alarm_bl, 0 ,0 ,0 )
+                    Toast.makeText(this, "Tắt chức năng báo thức", Toast.LENGTH_SHORT).show()
+                    a=true
+                }
+            }
+            notifiTv->{
+                if(n==true){
+                    notifiTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_notifi, 0 , 0 ,0 )
+                    Toast.makeText(this, "Bật chức năng thông báo", Toast.LENGTH_SHORT).show()
+                    n=false
+                }else if (n==false){
+                    notifiTv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_notifi_bl, 0 ,0 ,0 )
+                    Toast.makeText(this, "Tắt chức năng thông báo", Toast.LENGTH_SHORT).show()
+                    n=true
+                }
+            }
+            kpiTv->{
+                if(k==true){
+                    kpiTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_kpi, 0 , 0 ,0 )
+                    Toast.makeText(this, "Bật chức năng tính điểm", Toast.LENGTH_SHORT).show()
+                    k=false
+                }else if (k==false){
+                    kpiTv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.kpi_bl, 0 ,0 ,0 )
+                    Toast.makeText(this, "Tắt chức năng tính điểm", Toast.LENGTH_SHORT).show()
+                    k=true
+                }
+            }
+        }
 
 
     }
@@ -173,6 +233,10 @@ class AddActivity : AppCompatActivity(), DayOnClick{
         insignificance = findViewById(R.id.kquan_trong)
         urgency = findViewById(R.id.khan_cap)
         notUrgent = findViewById(R.id.kkhan_cap)
+
+        alamTv = findViewById(R.id.alarm_tv)
+        kpiTv = findViewById(R.id.kpi_tv)
+        notifiTv = findViewById(R.id.notifi_tv)
     }
 
     override fun onResume() {
@@ -205,7 +269,7 @@ class AddActivity : AppCompatActivity(), DayOnClick{
         spiner2.adapter = adapterSpiner2
     }
     //add ngày và thứ vào array
-    @RequiresApi(Build.VERSION_CODES.O)
+
     fun getDateOfMont(month : Int){
         listDay = arrayListOf()
         weekDay = arrayListOf()
