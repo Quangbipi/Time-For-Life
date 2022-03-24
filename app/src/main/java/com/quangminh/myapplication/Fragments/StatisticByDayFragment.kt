@@ -20,7 +20,7 @@ import com.quangminh.myapplication.Adapter.AdapterMisstion
 import com.quangminh.myapplication.R
 import com.quangminh.myapplication.model.ModelTest
 
-class StatsticByDayFragment:Fragment() {
+class StatisticByDayFragment:Fragment() {
 
     lateinit var pieChart: PieChart
     lateinit var listWork : ArrayList<ModelTest>
@@ -31,6 +31,8 @@ class StatsticByDayFragment:Fragment() {
 
     lateinit var infor: ImageView
     lateinit var inforTab : FrameLayout
+
+    var count : Int = 0
     companion object {
         val MATERIAL_COLOR_S : IntArray = intArrayOf(
                 rgb("#D7ECFC"), rgb("#D9D7FC"), rgb("#FBD7FC"), rgb("#FCD7E2"), rgb("#C4C1C1")
@@ -54,12 +56,12 @@ class StatsticByDayFragment:Fragment() {
         dataTest()
 
         infor.setOnClickListener {
-            var count : Int = 0
+
             if(count == 0){
-                inforTab.visibility= View.VISIBLE
+                inforTab.visibility= View.INVISIBLE
                 count = 1
             }else if(count ==1){
-                inforTab.visibility = View.INVISIBLE
+                inforTab.visibility = View.VISIBLE
                 count =0
             }
 

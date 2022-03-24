@@ -9,7 +9,7 @@
 
     <ImageButton
         android:background="@android:color/transparent"
-        android:id="@+id/back_setting"
+        android:id="@+id/back_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -23,16 +23,16 @@
         />
 
     <TextView
-        android:id="@+id/them_moi"
+        android:id="@+id/thong_tin_cv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="@string/add"
+        android:text="@string/infor"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="normal|bold"
-        app:layout_constraintStart_toEndOf="@+id/back_setting"
+        app:layout_constraintStart_toEndOf="@+id/back_main"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -41,17 +41,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:text="Tháng 9, 2021"
+        tools:text="Tháng 9, 2021"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_setting" />
+        app:layout_constraintTop_toBottomOf="@+id/back_main" />
 
     <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/layout_date"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
-        android:id="@+id/rcw_day_2"
+        android:id="@+id/rcw_day_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -61,13 +62,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <Spinner
-        android:id="@+id/spn_time"
+        android:id="@+id/spn_time_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_setting" />
+        app:layout_constraintTop_toBottomOf="@+id/back_main" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -79,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rcw_day_2"
+        app:layout_constraintTop_toBottomOf="@+id/rcw_day_3"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,7 +91,7 @@
                 android:id="@+id/misstion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nhiệm vụ"
+                android:text="@string/misstion"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -98,13 +99,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/edt_misstion"
+                android:autofillHints="@string/nd_edt"
+                android:id="@+id/edt_misstion_replace"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/custom_bgk_misstion"
                 android:gravity="top"
-                android:hint="Nội dung công việc"
+                android:hint="@string/nd_edt"
                 android:inputType="textMultiLine"
                 android:maxLines="40"
                 android:padding="8dp"
@@ -117,26 +119,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Bắt đầu"
+                android:text="@string/start"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edt_misstion" />
+                app:layout_constraintTop_toBottomOf="@id/edt_misstion_replace" />
 
             <TextView
                 android:id="@+id/tv_time_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Kết thúc"
+                android:text="@string/end"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.6"
                 app:layout_constraintStart_toEndOf="@+id/tv_time_start"
-                app:layout_constraintTop_toBottomOf="@id/edt_misstion" />
+                app:layout_constraintTop_toBottomOf="@id/edt_misstion_replace" />
 
             <LinearLayout
 
@@ -149,29 +151,29 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_time_end">
 
                 <TextView
-                    android:id="@+id/time_start"
+                    android:id="@+id/time_start_replace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_bgk_misstion"
                     android:drawableEnd="@drawable/ic_hour"
                     android:padding="8dp"
-                    android:text="15:00"
+                    tools:text="15:00"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/time_end"
+                    android:id="@+id/time_end_replace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_bgk_misstion"
                     android:drawableEnd="@drawable/ic_hour"
                     android:padding="8dp"
-                    android:text="15:00"
+                    tools:text="15:00"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -182,7 +184,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Mức độ ưu tiên"
+                android:text="@string/importance"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -190,6 +192,7 @@
                 app:layout_constraintTop_toBottomOf="@id/linear_time" />
 
             <LinearLayout
+                android:baselineAligned="false"
                 android:id="@+id/liner_priority"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -201,68 +204,64 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/quan_trong"
+                        android:id="@+id/quan_trong_replace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@drawable/custom_bgk_priority_1"
-                        android:clickable="true"
                         android:gravity="center"
                         android:padding="24dp"
-                        android:text="Quan trọng"
-                        android:textSize="16dp" />
+                        android:text="@string/qtrong"
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/kquan_trong"
+                        android:id="@+id/kquan_trong_replace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/custom_bgk_priority_3"
-                        android:clickable="true"
                         android:gravity="center"
                         android:padding="24dp"
-                        android:text="Không quan trọng"
-                        android:textSize="16dp" />
+                        android:text="@string/kqtrong"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
 
                     <TextView
-                        android:id="@+id/khan_cap"
+                        android:id="@+id/khan_cap_replace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@drawable/custom_bgk_priority_3"
-                        android:clickable="true"
                         android:gravity="center"
                         android:padding="24dp"
-                        android:text="Khẩn cấp"
-                        android:textSize="16dp" />
+                        android:text="@string/kcap"
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/kkhan_cap"
+                        android:id="@+id/kkhan_cap_replace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/custom_bgk_priority_2"
-                        android:clickable="true"
                         android:gravity="center"
                         android:padding="24dp"
-                        android:text="Không khẩn cấp"
-                        android:textSize="16dp" />
+                        android:text="@string/kkcap"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -271,7 +270,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Nhắc nhở"
+                android:text="@string/remind"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -297,55 +296,55 @@
 
                 <Spinner
 
-                    android:id="@+id/spiner_minute"
+                    android:id="@+id/spiner_minute_replace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/alarm_icon"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
                     android:layout_marginTop="-12dp" />
 
                 <TextView
-                    android:id="@+id/alarm_tv"
+                    android:id="@+id/alarm_tv_replace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/spiner_minute"
+                    android:layout_below="@+id/spiner_minute_replace"
                     android:layout_marginTop="8dp"
-                    android:drawableLeft="@drawable/ic_alarm_bl"
+                    android:drawableStart="@drawable/ic_alarm_bl"
                     android:drawablePadding="8dp"
-                    android:text="Alarm" />
+                    android:text="@string/alarm" />
 
                 <TextView
-                    android:id="@+id/notifi_tv"
+                    android:id="@+id/notifi_tv_replace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/spiner_minute"
-                    android:layout_alignLeft="@id/alarm_tv"
-                    android:layout_marginLeft="193dp"
+                    android:layout_below="@id/spiner_minute_replace"
+                    android:layout_alignStart="@id/alarm_tv_replace"
+                    android:layout_marginStart="193dp"
                     android:layout_marginTop="8dp"
-                    android:drawableLeft="@drawable/ic_notifi_bl"
+                    android:drawableStart="@drawable/ic_notifi_bl"
                     android:drawablePadding="8dp"
-                    android:text="Notification" />
+                    android:text="@string/notifi" />
 
                 <TextView
-                    android:id="@+id/kpi_tv"
+                    android:id="@+id/kpi_tv_replace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/alarm_tv"
+                    android:layout_below="@+id/alarm_tv_replace"
                     android:layout_marginTop="8dp"
-                    android:drawableLeft="@drawable/kpi_bl"
+                    android:drawableStart="@drawable/kpi_bl"
                     android:drawablePadding="8dp"
-                    android:text="Đánh giá KPI" />
+                    android:text="@string/evalute" />
             </RelativeLayout>
 
             <Button
-                android:id="@+id/btn_save"
+                android:id="@+id/btn_update"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/custom_button"
-                android:text="Lưu"
+                android:text="@string/update"
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:textStyle="bold"

@@ -20,6 +20,9 @@ class StaticClass {
         val ITEM_VIEW_TYPE_0= 0
         val ITEM_VIEW_TYPE_1= 1
         val ITEM_VIEW_TYPE_2= 2
+        //spiner Typr
+        val TYPE_SPINER_0=0
+        val TYPE_SPINER_1=1
 
     }
 }

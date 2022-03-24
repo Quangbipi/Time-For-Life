@@ -61,6 +61,7 @@ class AddActivity : AppCompatActivity(), DayOnClick{
         //setManager()
         setAdapterspiner()
 
+        // event click
         back.setOnClickListener {
             val inten = Intent(this, MainActivity::class.java)
             startActivity(inten)

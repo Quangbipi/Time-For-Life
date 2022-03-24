@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#132A9F</color>
+    <color name="line">#3131F8</color>
     <color name="cardColor">#4DFAF8F8</color>
     <color name="priority1">#D9D7FC</color>
     <color name="priority2">#FBD7FC</color>

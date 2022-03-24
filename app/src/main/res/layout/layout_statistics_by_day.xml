@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:text="Không quan trọng, khẩn cấp"
+                    android:text="@string/kqtrong_kcap"
                     android:drawableLeft="@drawable/ic_ellipse_71"/>
                 <TextView
                     android:textSize="16sp"
@@ -74,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:text="Không quan trọng, không khẩn cấp"
+                    android:text="@string/kqtrong_kkcap"
                     android:drawableLeft="@drawable/ic_ellipse_51"/>
                 <TextView
                     android:textSize="16sp"
@@ -83,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:text="Quan trọng, khẩn cấp"
+                    android:text="@string/qtrong_kcap"
                     android:drawableLeft="@drawable/ic_ellipse_61"/>
                 <TextView
                     android:textSize="16sp"
@@ -92,8 +92,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:text="Quan trọng, không khẩn cấp"
+                    android:text="@string/qtrong_kkcap"
                     android:drawableLeft="@drawable/ic_ellipse_91"/>
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:text="@string/tao_cv"
+                    android:drawableLeft="@drawable/ic_ellipse_81"/>
             </LinearLayout>
 
         </FrameLayout>
@@ -103,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Tổng điểm n/m"
+            android:text="@string/total_kpi"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.quangminh.myapplication.Interface.ProjectOnClick
 import com.quangminh.myapplication.R
 
-class AdapterProject(var workList : List<String>) : RecyclerView.Adapter<AdapterProject.ViewHolder>(){
+class AdapterProject(var workList : List<String>, var listener : ProjectOnClick) : RecyclerView.Adapter<AdapterProject.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterProject.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_project, parent, false)
         return ViewHolder(v)
@@ -22,9 +23,13 @@ class AdapterProject(var workList : List<String>) : RecyclerView.Adapter<Adapter
         var work : String = workList[position]
 
         holder.text1.setText(work)
+
+        holder.itemView.setOnClickListener {
+            listener.onProjectOnClick(position)
+        }
     }
 
-    inner class ViewHolder(itemview : View): RecyclerView.ViewHolder(itemview){
+    inner class ViewHolder(itemview : View): RecyclerView.ViewHolder(itemview), View.OnClickListener{
         lateinit var carView : CardView
         lateinit var text1 : TextView
         init {
@@ -32,6 +37,10 @@ class AdapterProject(var workList : List<String>) : RecyclerView.Adapter<Adapter
             carView.background = null
 
             text1 = itemview.findViewById(R.id.work)
+        }
+
+        override fun onClick(p0: View?) {
+
         }
 
     }

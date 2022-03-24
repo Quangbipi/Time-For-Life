@@ -18,4 +18,28 @@
         <item>Theo 30 phút</item>
     </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_kpi">Tổng điểm KPI</string>
+
+    <string name="qtrong_kcap">Quan trọng, khẩn cấp</string>
+    <string name="kqtrong_kcap">Không quan trọng, khẩn cấp</string>
+    <string name="kqtrong_kkcap">Không quan trọng, không khẩn cấp</string>
+    <string name="qtrong_kkcap">Quan trọng, không khẩn cấp</string>
+    <string name="tao_cv">Tạo công việc đúng thời hạn</string>
+    <string name="add">Thêm mới</string>
+<!--    View chỉnh sửa-->
+    <string name="infor">Thông tin công việc</string>
+    <string name="misstion">Công việc</string>
+    <string name="start">Bắt đầu</string>
+    <string name="end">Kết thúc</string>
+    <string name="importance">Mức độ ưu tiên</string>
+    <string name="remind">Nhắc nhở</string>
+    <string name="update">Cập nhật</string>
+    <string name="qtrong">Quan trọng</string>
+    <string name="kqtrong">Không quan trọng</string>
+    <string name="kcap">Khẩn cấp</string>
+    <string name="kkcap">Không khẩn cấp</string>
+    <string name="nd_edt">Nội dung công việc</string>
+    <string name="alarm">Alarm</string>
+    <string name="notifi">Notification</string>
+    <string name="evalute">Đánh giá KPI</string>
 </resources>

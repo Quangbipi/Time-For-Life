@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.quangminh.myapplication.Adapter.AdapterDate
 import com.quangminh.myapplication.Adapter.AdapterProject
 import com.quangminh.myapplication.AddActivity
+import com.quangminh.myapplication.ChangeActivity
 import com.quangminh.myapplication.Interface.DayOnClick
+import com.quangminh.myapplication.Interface.ProjectOnClick
 import com.quangminh.myapplication.R
 import com.quangminh.myapplication.StaticClass
 import java.text.SimpleDateFormat
@@ -23,7 +25,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class ProjectFragment : Fragment(), DayOnClick {
+class ProjectFragment : Fragment(), DayOnClick, ProjectOnClick {
     lateinit var recycleView : RecyclerView
     lateinit var recyclerView2: RecyclerView
 
@@ -85,7 +87,7 @@ class ProjectFragment : Fragment(), DayOnClick {
         adapter_date = AdapterDate(dayList, weekDayList, this, StaticClass.ITEM_VIEW_TYPE_0)
         recycleView.adapter = adapter_date
         // adapter của phần hiển thị công việc
-        adapterProject = AdapterProject(workList)
+        adapterProject = AdapterProject(workList, this)
         recyclerView2.adapter=adapterProject
     }
 
@@ -128,6 +130,12 @@ class ProjectFragment : Fragment(), DayOnClick {
 
     override fun onItemClick(position: Int) {
         Toast.makeText(context, "$position click", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onProjectOnClick(position: Int) {
+        Toast.makeText(context, "$position click", Toast.LENGTH_SHORT).show()
+        val intent = Intent (context, ChangeActivity::class.java)
+        startActivity(intent)
     }
 }
 

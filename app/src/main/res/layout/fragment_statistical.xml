@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btDay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,26 +33,26 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btMonth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:background="@drawable/custom_button_2"
         android:text="Tháng"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        app:layout_constraintBottom_toBottomOf="@+id/btDay"
+        app:layout_constraintStart_toEndOf="@+id/btDay" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btYear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/custom_button_2"
         android:text="Năm"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="@+id/btMonth"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/btMonth" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/btMonth" />
 
 
 
